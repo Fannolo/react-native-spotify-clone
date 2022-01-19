@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Without this, ts-jest is not able to resolve synthetic imports. For
+    // instance, we cannot use `import React from 'react'`, but we need to do
+    // `import * as React from 'react'`.
+    // See https://stackoverflow.com/a/59132138/3301102
+    "module": "ESNext"
+  }
+}

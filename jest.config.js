@@ -13,10 +13,8 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   preset: 'react-native',
-  setupFilesAfterEnv: ['./tests/unit/setup-files-after-env.js'],
   testEnvironment: 'jsdom',
   testMatch: ['**/*.test.{js,ts,tsx}'],
-  testResultsProcessor: 'jest-sonar-reporter',
   transform: {
     ...jsWithBabel.transform,
     '\\.js$': './node_modules/react-native/jest/preprocessor.js',
