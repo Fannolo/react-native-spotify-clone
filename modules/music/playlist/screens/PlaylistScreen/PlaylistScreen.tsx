@@ -29,7 +29,7 @@ const PlaylistScreen = (): JSX.Element => {
   }, []);
 
   const renderItems = useCallback(({ item: song, index }) => {
-    return <Song key={index} />;
+    return <Song song={song} key={index} />;
   }, []);
 
   return (
@@ -44,7 +44,7 @@ const PlaylistScreen = (): JSX.Element => {
             name={data.name}
           />
           <FlatList
-            data={data.tracks}
+            data={data.tracks.items}
             renderItem={renderItems}
             showsVerticalScrollIndicator={false}
             scrollEnabled

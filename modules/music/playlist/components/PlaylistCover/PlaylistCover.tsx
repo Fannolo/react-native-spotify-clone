@@ -11,11 +11,13 @@ interface PlaylistCoverProps {
 
 const PlaylistCover = ({ playlist }: PlaylistCoverProps) => {
   const navigation = useNavigation();
+
   const handleOnPress = useCallback(() => {
     navigation.navigate(Routes.PlaylistScreen, {
-      params: { id: playlist.id },
+      id: playlist.id,
     });
-  }, []);
+  }, [navigation, playlist]);
+
   return (
     <TouchableOpacity onPress={handleOnPress} style={styles.container}>
       <Image
