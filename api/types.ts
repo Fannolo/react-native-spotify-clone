@@ -8,4 +8,8 @@ export interface ApiPayload<T, K> {
   requestBody: K;
 }
 
+export interface PlaylistDetailId {
+  id: string;
+}
+
 export type { AxiosBaseQueryFn };

@@ -1,14 +1,14 @@
-interface Image {
+export interface ImageType {
   height: number | string | null;
   url: string;
   width: number | string | null;
 }
 
-interface ExternalUrls {
+export interface ExternalUrls {
   spotify: string;
 }
 
-interface Owner {
+export interface Owner {
   display_name: string;
   external_urls: ExternalUrls;
   href: string;
@@ -17,7 +17,7 @@ interface Owner {
   uri: string;
 }
 
-interface Tracks {
+export interface Tracks {
   href: string;
   total: number;
 }
@@ -28,7 +28,7 @@ export interface Playlist {
   external_urls: ExternalUrls;
   href: string;
   id: string;
-  images: Image[];
+  images: ImageType[];
   name: string;
   owner: Owner;
   primary_color: string | null;

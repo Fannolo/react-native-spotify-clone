@@ -115,7 +115,7 @@ module.exports = {
     // Enforce not required props to have default values
     'react/require-default-props': 'off',
     // Enforce exhaustive deps for hooks
-    'react-hooks/exhaustive-deps': 'on',
+    'react-hooks/exhaustive-deps': 1,
     // ---
     // * Disable checks for class components since they are disallowed
     'react/jsx-sort-default-props': 'off',

@@ -1,6 +1,7 @@
 export const fontSizes = {
   title: 23,
-  subtitle: 23,
+  subtitle: 17,
+  caption: 13,
 };
 
 interface FontWeightsType {

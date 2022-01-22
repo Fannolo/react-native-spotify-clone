@@ -1,3 +1,5 @@
+import PlaylistScreen from './PlaylistScreen';
+
 describe('Playlist screen', () => {
   it('should render the component as expected');
   it('should receive from the navigation a playlist id');
