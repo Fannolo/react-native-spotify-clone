@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { useLazyGetFeaturedPlaylistsQuery } from 'rnplayer/api/music/hooks';
 import colors from 'rnplayer/utils/colors';
 import PlaylistCover from '../../components/PlaylistCover/PlaylistCover';
