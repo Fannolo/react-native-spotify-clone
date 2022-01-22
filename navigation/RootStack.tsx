@@ -1,7 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from 'rnplayer/modules/music/playlist/screens/HomeScreen';
+
 import { RootStackParamList } from './constants';
+import HomeScreen from 'rnplayer/modules/music/playlist/screens/HomeScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
