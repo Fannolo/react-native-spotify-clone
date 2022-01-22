@@ -1,4 +1,6 @@
-import musicAPI from '.';
+import musicAPI from './index';
 
-export const { useGetFeaturedPlaylistsQuery, useGetPlaylistDetailQuery } =
-  musicAPI;
+export const {
+  useLazyGetFeaturedPlaylistsQuery,
+  useLazyGetPlaylistDetailQuery,
+} = musicAPI;

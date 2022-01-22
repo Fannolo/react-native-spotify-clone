@@ -1,10 +1,15 @@
 import api from 'rnplayer/api';
+import { ApiPayload } from '../types';
 import { getFeaturedPlaylists, getPlaylistDetail } from './playlist';
 
 const musicAPI = api.injectEndpoints({
   endpoints: (builder) => ({
-    getFeaturedPlaylists: getFeaturedPlaylists(builder),
-    getPlaylistDetail: getPlaylistDetail(builder),
+    getFeaturedPlaylists: builder.query({
+      query: getFeaturedPlaylists,
+    }),
+    getPlaylistDetail: builder.query({
+      query: getPlaylistDetail,
+    }),
   }),
   overrideExisting: true,
 });
