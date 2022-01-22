@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ImageType, Owner } from 'rnplayer/types/Playlist';
 import { Followers } from 'rnplayer/types/PlaylistDetail';
 import colors from 'rnplayer/utils/colors';
+import getCollapsedValues from 'rnplayer/utils/getCollapsedValues';
 import Caption from '../typography/Caption';
 import Subtitle from '../typography/Subtitle';
 import Title from '../typography/Title';
@@ -42,7 +43,7 @@ const PlaylistDetailHeader = ({
         </View>
         <View>
           <Subtitle text={description} />
-          <Caption text={`${followers.total} followers`} />
+          <Caption text={`${getCollapsedValues(followers.total)} followers`} />
         </View>
       </View>
     </LinearGradient>
