@@ -30,23 +30,19 @@ const PlaylistDetailHeader = ({
 
   return (
     <LinearGradient colors={gradientColors} style={styles.container}>
-      <View style={styles.innerContainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: images[0]?.url }}
-          resizeMode={'contain'}
-        />
+      <Image
+        style={styles.image}
+        source={{ uri: images[0]?.url }}
+        resizeMode={'contain'}
+      />
+      <View style={styles.titleContainer}>
         <View>
-          <View style={styles.titleContainer}>
-            <View>
-              <Title text={name} />
-              <Caption text={`Playlist by ${owner.display_name}`} />
-            </View>
-            <View>
-              <Subtitle text={description} />
-              <Caption text={`${followers.total} followers`} />
-            </View>
-          </View>
+          <Title text={name} />
+          <Caption text={`Playlist by ${owner.display_name}`} />
+        </View>
+        <View>
+          <Subtitle text={description} />
+          <Caption text={`${followers.total} followers`} />
         </View>
       </View>
     </LinearGradient>
@@ -55,13 +51,12 @@ const PlaylistDetailHeader = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexWrap: 'wrap',
     padding: 20,
-  },
-  innerContainer: {
+    flexWrap: 'wrap',
     flexDirection: 'row',
   },
   titleContainer: {
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
