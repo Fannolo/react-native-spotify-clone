@@ -1,10 +1,12 @@
+/* eslint-disable camelcase */
+import React from 'react';
 import { render } from '@testing-library/react-native';
 import PlaylistDetailHeader from '.';
 
 const renderPlaylistDetailHeader = () => {
   return render(
     <PlaylistDetailHeader
-      description={'Hello'}
+      description='Hello'
       images={[
         {
           height: null,
@@ -26,7 +28,7 @@ const renderPlaylistDetailHeader = () => {
         type: 'user',
         uri: 'spotify:user:spotify',
       }}
-      name={'name'}
+      name='name'
     />,
   );
 };

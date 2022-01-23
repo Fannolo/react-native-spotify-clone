@@ -1,0 +1,85 @@
+{
+  "root": true,
+  "extends": [
+    // N.B: be careful about switching the order of these!
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-native/all",
+    "@react-native-community",
+    "eslint-config-prettier",
+    "plugin:jest/recommended"
+  ],
+  "settings": {
+    "linkComponents": [
+      "Hyperlink",
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      // configure jest for e2e tests
+      "files": ["tests/e2e/**/*.js"],
+      "env": {
+        "jest": true,
+        "jest/globals": true
+      },
+      "globals": {
+        "device": true,
+        "element": true,
+        "by": true,
+        "waitFor": true
+      }
+    },
+    {
+      // enable @typescript-eslint for ts files
+      "files": "*.{ts,tsx}",
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    },
+    {
+      // we relax some rules for tests
+      "files": [
+        "*.{spec,test}.{js,ts,tsx}",
+        "**/__{mocks,tests}__/**/*.{js,ts,tsx}"
+      ],
+      "rules": {
+        "react-native/no-color-literals": "off"
+      }
+    }
+  ],
+  "plugins": ["unused-imports"],
+  "rules": {
+    "unused-imports/no-unused-imports": "error",
+    "camelcase": "error",
+    "no-console": "error",
+    "no-param-reassign": ["error", { "props": true }],
+    "consistent-return": "off",
+    "jest/no-jasmine-globals": "off",
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "prefer-destructuring": "off",
+    "prettier/prettier": "off",
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      { "ignoreClassFields": true }
+    ],
+    "react/sort-comp": "off",
+    "react/no-array-index-key": "error",
+    "react/prefer-stateless-function": "error",
+    "react/no-unsafe": ["error", { "checkAliases": true }],
+    "react-native/sort-styles": "error",
+    // we need to fix this in FavouriteButton.js
+    "react/no-direct-mutation-state": "off",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      { "props": "never", "children": "never" }
+    ]
+  }
+}

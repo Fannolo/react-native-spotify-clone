@@ -10,9 +10,9 @@ const HomeScreen = (): JSX.Element => {
   const [getFeaturedPlaylists, { data, isError, isLoading, isSuccess }] =
     useLazyGetFeaturedPlaylistsQuery(undefined);
 
-  const handlePlaylist = async () => {
+  const handlePlaylist = useCallback(async () => {
     await getFeaturedPlaylists(undefined, undefined);
-  };
+  }, [getFeaturedPlaylists]);
 
   const renderItems = useCallback(({ item: playlist, index }) => {
     return <PlaylistCover playlist={playlist} key={index} />;
@@ -20,21 +20,25 @@ const HomeScreen = (): JSX.Element => {
 
   useEffect(() => {
     handlePlaylist();
-  }, []);
+  }, [handlePlaylist]);
 
   return (
     <View style={styles.container}>
       {isSuccess && (
         <>
-          <Title text={data.message} />
-          <FlatList
-            numColumns={2}
-            data={data.playlists.items}
-            renderItem={renderItems}
-            showsVerticalScrollIndicator={false}
-            scrollEnabled
-            testID='playlist-selection'
-          />
+          <View style={styles.titleContainer}>
+            <Title text={data.message} />
+          </View>
+          <View style={styles.albumContainer}>
+            <FlatList
+              numColumns={2}
+              data={data.playlists.items}
+              renderItem={renderItems}
+              showsVerticalScrollIndicator={false}
+              scrollEnabled
+              testID='playlist-selection'
+            />
+          </View>
         </>
       )}
     </View>
@@ -42,11 +46,19 @@ const HomeScreen = (): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  albumContainer: {
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
+  },
+  container: {
     backgroundColor: colors.dark.black,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  titleContainer: {
+    justifyContent: 'flex-start',
+    margin: 15,
   },
 });
 

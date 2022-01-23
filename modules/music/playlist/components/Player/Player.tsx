@@ -1,20 +1,23 @@
 import React, { createContext, useCallback, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+
 import colors from 'rnplayer/utils/colors';
+
 import PlayButton from '../PlayButton';
 import Caption from '../typography/Caption';
 
 interface PlayerContextInterface {
   songName: string | null;
   artist: string | null;
+  // eslint-disable-next-line camelcase
   preview_url: string | null;
 }
 
-type ContextInterface = {
-  handleSong?: (player: PlayerContextInterface) => void;
-} | null;
+interface ContextInterface {
+  handleSong: (player: PlayerContextInterface) => void;
+}
 
-export const PlayerContext = createContext<ContextInterface>(null);
+export const PlayerContext = createContext<ContextInterface | null>(null);
 
 interface PlayerProvider {
   children: JSX.Element;
@@ -23,12 +26,9 @@ interface PlayerProvider {
 const PlayerProvider = ({ children }: PlayerProvider): JSX.Element => {
   const [playerValue, setPlayerValue] = useState<PlayerContextInterface>();
 
-  const handleSong = useCallback(
-    (player: PlayerContextInterface) => {
-      setPlayerValue(player);
-    },
-    [playerValue],
-  );
+  const handleSong = useCallback((player: PlayerContextInterface) => {
+    setPlayerValue(player);
+  }, []);
 
   return (
     <>
@@ -57,14 +57,14 @@ const PlayerProvider = ({ children }: PlayerProvider): JSX.Element => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: colors.dark.black,
     borderTopColor: colors.dark.green,
     borderTopWidth: 2,
-    height: 80,
-    padding: 20,
-    justifyContent: 'space-between',
-    alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: colors.dark.black,
+    height: 80,
+    justifyContent: 'space-between',
+    padding: 20,
   },
 });
 

@@ -9,7 +9,7 @@ export interface ApiPayload<T, K> {
 }
 
 export interface PlaylistDetailId {
-  id: string;
+  id: string | number;
 }
 
 export type { AxiosBaseQueryFn };

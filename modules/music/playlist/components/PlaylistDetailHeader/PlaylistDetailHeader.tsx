@@ -26,7 +26,7 @@ const PlaylistDetailHeader = ({
 }: PlaylistDetailHeaderProps): JSX.Element => {
   const gradientColors = useMemo(
     () => [colors.dark.black, colors.dark.darkGreen],
-    [colors],
+    [],
   );
 
   return (
@@ -34,7 +34,7 @@ const PlaylistDetailHeader = ({
       <Image
         style={styles.image}
         source={{ uri: images[0]?.url }}
-        resizeMode={'contain'}
+        resizeMode='contain'
       />
       <View style={styles.titleContainer}>
         <View>
@@ -52,19 +52,19 @@ const PlaylistDetailHeader = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    flexWrap: 'wrap',
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 20,
+  },
+  image: {
+    height: 150,
+    marginRight: 13,
+    width: 150,
   },
   titleContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-  },
-  image: {
-    width: 150,
-    height: 150,
-    marginRight: 13,
   },
 });
 

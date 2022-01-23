@@ -1,32 +1,35 @@
-import { useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { RouteProp, useRoute } from '@react-navigation/native';
+
 import { useLazyGetPlaylistDetailQuery } from 'rnplayer/api/music/hooks';
 import { ApiPayload, PlaylistDetailId } from 'rnplayer/api/types';
 import colors from 'rnplayer/utils/colors';
+
 import PlaylistDetailHeader from '../../components/PlaylistDetailHeader';
 import Song from '../../components/Song';
 import Title from '../../components/typography/Title';
+import { RootStackParamList } from 'rnplayer/navigation/constants';
 
 const PlaylistScreen = (): JSX.Element => {
-  const route = useRoute();
+  const route = useRoute<RouteProp<RootStackParamList>>();
   const [getPlaylistDetail, { data, isError, isLoading, isSuccess }] =
     useLazyGetPlaylistDetailQuery();
 
   const retrievePlaylistDetail = useCallback(() => {
     const request: ApiPayload<PlaylistDetailId, void> = {
       queryParams: {
-        id: route.params.id,
+        id: route?.params?.id || '',
       },
       requestBody: undefined,
     };
     getPlaylistDetail(request);
-  }, []);
+  }, [getPlaylistDetail, route?.params?.id]);
 
   useEffect(() => {
     retrievePlaylistDetail();
-  }, []);
+  }, [retrievePlaylistDetail]);
 
   const renderItems = useCallback(({ item: song, index }) => {
     return <Song song={song} key={index} />;
@@ -52,17 +55,17 @@ const PlaylistScreen = (): JSX.Element => {
           />
         </>
       )}
-      {isLoading && <Title text={'loading'} />}
+      {isLoading && <Title text='loading' />}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.dark.black,
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 

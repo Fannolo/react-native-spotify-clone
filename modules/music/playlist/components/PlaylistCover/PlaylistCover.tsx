@@ -10,7 +10,7 @@ interface PlaylistCoverProps {
   playlist: Playlist;
 }
 
-const PlaylistCover = ({ playlist }: PlaylistCoverProps) => {
+const PlaylistCover = ({ playlist }: PlaylistCoverProps): JSX.Element => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleOnPress = useCallback(() => {
@@ -24,7 +24,7 @@ const PlaylistCover = ({ playlist }: PlaylistCoverProps) => {
       <Image
         style={styles.image}
         source={{ uri: playlist.images[0]?.url }}
-        resizeMode={'cover'}
+        resizeMode='cover'
       />
     </TouchableOpacity>
   );
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   container: { flex: 1, margin: 5 },
   image: {
     flex: 1,
-    width: 170,
     height: 170,
+    width: 170,
   },
 });
 

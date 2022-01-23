@@ -20,7 +20,7 @@ interface CaptionProps {
     | '900';
 }
 
-const Caption = ({ text, color, fontWeight }: CaptionProps) => {
+const Caption = ({ text, color, fontWeight }: CaptionProps): JSX.Element => {
   return (
     <View>
       <Text

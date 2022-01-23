@@ -7,7 +7,7 @@ interface SubtitleProps {
   text: string;
 }
 
-const Subtitle = ({ text }: SubtitleProps) => {
+const Subtitle = ({ text }: SubtitleProps): JSX.Element => {
   return (
     <View>
       <Text style={styles.subtitle}>{text}</Text>

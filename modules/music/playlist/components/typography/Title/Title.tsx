@@ -7,7 +7,7 @@ interface TitleProps {
   text: string;
 }
 
-const Title = ({ text }: TitleProps) => {
+const Title = ({ text }: TitleProps): JSX.Element => {
   return (
     <View>
       <Text style={styles.title}>{text}</Text>

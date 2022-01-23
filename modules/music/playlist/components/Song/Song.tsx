@@ -15,12 +15,15 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
   const artist = useMemo(() => song.track.artists[0]?.name, []);
   const isPreviewAvailable = useMemo(() => Boolean(song.track.preview_url), []);
 
-  const trackToPlay = {
-    url: song.track.preview_url || '',
-    title: song.track.name || '',
-    artist: artist,
-    duration: 411,
-  };
+  const trackToPlay = useMemo(
+    () => ({
+      url: song.track.preview_url || '',
+      title: song.track.name || '',
+      artist: artist,
+      duration: 411,
+    }),
+    [artist, song.track.name, song.track.preview_url],
+  );
 
   const addPlayer = useCallback(async () => {
     const playerQueue = await TrackPlayer.getQueue();
@@ -29,7 +32,7 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
     }
     await TrackPlayer.add([trackToPlay]);
     await TrackPlayer.play();
-  }, []);
+  }, [trackToPlay]);
 
   return (
     <PlayerContext.Consumer>
@@ -41,6 +44,7 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
             handleSong({
               songName: song.track.name,
               artist: artist,
+              // eslint-disable-next-line camelcase
               preview_url: song.track.preview_url,
             });
             addPlayer();
