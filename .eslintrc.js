@@ -15,8 +15,8 @@ module.exports = {
       files: ['*.js'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-empty-function': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-empty-function': 'on',
+        '@typescript-eslint/no-unused-vars': 'on',
         '@typescript-eslint/no-var-requires': 'off',
       },
     },

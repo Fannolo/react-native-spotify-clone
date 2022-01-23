@@ -1,0 +1,22 @@
+# http://editorconfig.org
+
+# A special property that should be specified at the top of the file outside of
+# any sections. Set to true to stop .editor config file search on current file
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+trim_trailing_whitespace = true
+
+indent_size = 2
+end_of_line = lf
+
+insert_final_newline = true
+
+[*.{js,yml,json,scss,eslintrc}]
+indent_size = 2
+
+# Windows files
+[*.bat]
+end_of_line = crlf
