@@ -8,16 +8,16 @@ import Caption from '../typography/Caption';
 
 interface PlayerContextInterface {
   songName: string | null;
-  artist: string | null;
+  artist?: string | null;
   // eslint-disable-next-line camelcase
   preview_url: string | null;
 }
 
-interface ContextInterface {
+type ContextType = {
   handleSong: (player: PlayerContextInterface) => void;
-}
+};
 
-export const PlayerContext = createContext<ContextInterface | null>(null);
+export const PlayerContext = createContext<ContextType | null>(null);
 
 interface PlayerProvider {
   children: JSX.Element;

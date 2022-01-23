@@ -42,12 +42,12 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
 
   return (
     <PlayerContext.Consumer>
-      {({ handleSong }): JSX.Element => (
+      {(context): JSX.Element => (
         <TouchableOpacity
           disabled={!isPreviewAvailable}
           style={styles.songContainer}
           onPress={() => {
-            handleSong({
+            context?.handleSong({
               songName: song.track.name,
               artist: artist,
               // eslint-disable-next-line camelcase
