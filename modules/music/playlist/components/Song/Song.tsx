@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TrackPlayer from 'react-native-track-player';
 import { Song as SongType } from 'rnplayer/types/PlaylistDetail';
@@ -56,19 +56,21 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
             addPlayer();
           }}
         >
-          <Caption
-            text={song.track.name}
-            color={
-              isPreviewAvailable ? colors.dark.white : colors.dark.darkGray
-            }
-          />
           {artist && (
-            <Caption
-              text={artist}
-              color={
-                isPreviewAvailable ? colors.dark.gray : colors.dark.darkGray
-              }
-            />
+            <>
+              <Caption
+                text={song.track.name}
+                color={
+                  isPreviewAvailable ? colors.dark.white : colors.dark.darkGray
+                }
+              />
+              <Caption
+                text={artist}
+                color={
+                  isPreviewAvailable ? colors.dark.gray : colors.dark.darkGray
+                }
+              />
+            </>
           )}
         </TouchableOpacity>
       )}
@@ -78,7 +80,9 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
 
 const styles = StyleSheet.create({
   songContainer: {
+    flex: 1,
     padding: 10,
+    width: '100%',
   },
 });
 

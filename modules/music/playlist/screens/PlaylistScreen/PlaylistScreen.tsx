@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { useLazyGetPlaylistDetailQuery } from 'rnplayer/api/music/hooks';
@@ -32,7 +31,7 @@ const PlaylistScreen = (): JSX.Element => {
   }, [retrievePlaylistDetail]);
 
   const renderItems = useCallback(({ item: song, index }) => {
-    return <Song song={song} key={index} />;
+    return <Song song={song} key={song.track.name} />;
   }, []);
 
   return (
@@ -46,16 +45,21 @@ const PlaylistScreen = (): JSX.Element => {
             owner={data.owner}
             name={data.name}
           />
-          <FlatList
-            data={data.tracks.items}
-            renderItem={renderItems}
-            showsVerticalScrollIndicator={false}
-            scrollEnabled
-            testID='playlist-selection'
-          />
+          <View style={styles.songContainer}>
+            <FlatList
+              data={data.tracks.items}
+              renderItem={renderItems}
+              showsVerticalScrollIndicator={false}
+              scrollEnabled
+              testID='playlist-selection'
+            />
+          </View>
         </>
       )}
-      {isLoading && <Title text='loading' />}
+      {isLoading && (
+        <ActivityIndicator size='small' color={colors.dark.green} />
+      )}
+      {isError && <Title text='Application Error' />}
     </View>
   );
 };
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  songContainer: { flex: 1, paddingLeft: 15, width: '100%' },
 });
 
 export default PlaylistScreen;

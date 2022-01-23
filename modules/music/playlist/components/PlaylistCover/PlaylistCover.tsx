@@ -31,9 +31,8 @@ const PlaylistCover = ({ playlist }: PlaylistCoverProps): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, margin: 5 },
+  container: { margin: 5 },
   image: {
-    flex: 1,
     height: 170,
     width: 170,
   },

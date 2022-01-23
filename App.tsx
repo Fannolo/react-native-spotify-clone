@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import React from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { LogBox, StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import api from './api';
@@ -10,6 +10,9 @@ import RootStack from './navigation/RootStack';
 import colors from './utils/colors';
 
 const App = (): JSX.Element => {
+  LogBox.ignoreLogs([
+    "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
+  ]);
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeAreaContainer}>
