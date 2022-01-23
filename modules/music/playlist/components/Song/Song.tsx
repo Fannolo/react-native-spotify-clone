@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TrackPlayer from 'react-native-track-player';
 import { Song as SongType } from 'rnplayer/types/PlaylistDetail';
