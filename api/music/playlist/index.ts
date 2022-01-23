@@ -1,10 +1,5 @@
-import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 import { AxiosRequestConfig } from 'axios';
-import {
-  ApiPayload,
-  AxiosBaseQueryFn,
-  PlaylistDetailId,
-} from 'rnplayer/api/types';
+import { ApiPayload, PlaylistDetailId } from 'rnplayer/api/types';
 import { FEATURED_PLAYLISTS, PLAYLIST_DETAIL } from './constants';
 
 export const getFeaturedPlaylists = (): AxiosRequestConfig => ({

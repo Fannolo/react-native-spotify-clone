@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import createMockStore from 'redux-mock-store';

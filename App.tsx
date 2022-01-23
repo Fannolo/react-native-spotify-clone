@@ -9,11 +9,11 @@ import Player from './modules/music/playlist/components/Player/Player';
 import RootStack from './navigation/RootStack';
 import colors from './utils/colors';
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeAreaContainer}>
-        <StatusBar barStyle={'light-content'} />
+        <StatusBar barStyle='light-content' />
         <ApiProvider api={api}>
           <Player.Provider>
             <NavigationContainer>
@@ -27,7 +27,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  safeAreaContainer: { flex: 1, backgroundColor: colors.dark.black },
+  safeAreaContainer: { backgroundColor: colors.dark.black, flex: 1 },
 });
 
 export default App;

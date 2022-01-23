@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { ImageType, Owner } from '../Playlist';
 
 export interface Followers {

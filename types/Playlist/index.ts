@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export interface ImageType {
   height: number | string | null;
   url: string;
@@ -38,5 +39,3 @@ export interface Playlist {
   type: string;
   uri: string;
 }
-
-export interface FeaturedPlaylistResponse {}

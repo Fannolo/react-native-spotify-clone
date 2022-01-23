@@ -1,5 +1,4 @@
 import api from 'rnplayer/api';
-import { ApiPayload } from '../types';
 import { getFeaturedPlaylists, getPlaylistDetail } from './playlist';
 
 const musicAPI = api.injectEndpoints({

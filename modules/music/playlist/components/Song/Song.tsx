@@ -12,8 +12,14 @@ interface SongItemProps {
 }
 
 const Song = ({ song }: SongItemProps): JSX.Element => {
-  const artist = useMemo(() => song.track.artists[0]?.name, []);
-  const isPreviewAvailable = useMemo(() => Boolean(song.track.preview_url), []);
+  const artist = useMemo(
+    () => song.track.artists[0]?.name,
+    [song.track.artists],
+  );
+  const isPreviewAvailable = useMemo(
+    () => Boolean(song.track.preview_url),
+    [song.track.preview_url],
+  );
 
   const trackToPlay = useMemo(
     () => ({
