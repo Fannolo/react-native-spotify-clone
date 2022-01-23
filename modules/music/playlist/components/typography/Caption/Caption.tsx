@@ -6,13 +6,29 @@ import { fontSizes, fontWeights } from 'rnplayer/utils/consants';
 interface CaptionProps {
   text: string;
   color?: string;
+  fontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
 }
 
-const Caption = ({ text, color }: CaptionProps) => {
+const Caption = ({ text, color, fontWeight }: CaptionProps) => {
   return (
     <View>
       <Text
-        style={[styles.caption, { color: color ? color : colors.dark.gray }]}
+        style={[
+          styles.caption,
+          { color: color ? color : colors.dark.gray },
+          { fontWeight: fontWeight ? fontWeight : fontWeight },
+        ]}
       >
         {text}
       </Text>

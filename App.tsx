@@ -5,6 +5,7 @@ import { StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import api from './api';
+import Player from './modules/music/playlist/components/Player/Player';
 import RootStack from './navigation/RootStack';
 import colors from './utils/colors';
 
@@ -14,9 +15,11 @@ const App = () => {
       <SafeAreaView style={styles.safeAreaContainer}>
         <StatusBar barStyle={'light-content'} />
         <ApiProvider api={api}>
-          <NavigationContainer>
-            <RootStack />
-          </NavigationContainer>
+          <Player.Provider>
+            <NavigationContainer>
+              <RootStack />
+            </NavigationContainer>
+          </Player.Provider>
         </ApiProvider>
       </SafeAreaView>
     </SafeAreaProvider>

@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   HomeScreen: undefined;
-  PlaylistScreen: undefined;
+  PlaylistScreen: { id: number | string };
 };
 
 export enum Routes {

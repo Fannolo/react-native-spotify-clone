@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Routes } from 'rnplayer/navigation/constants';
+import { RootStackParamList, Routes } from 'rnplayer/navigation/constants';
 import { Playlist } from 'rnplayer/types/Playlist';
 
 interface PlaylistCoverProps {
@@ -10,7 +11,7 @@ interface PlaylistCoverProps {
 }
 
 const PlaylistCover = ({ playlist }: PlaylistCoverProps) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleOnPress = useCallback(() => {
     navigation.navigate(Routes.PlaylistScreen, {
