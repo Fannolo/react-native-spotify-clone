@@ -28,6 +28,7 @@ jest.unmock('react-native');
 
 jest.mock('react-native-track-player', () => {
   return {
+    usePlaybackState: jest.fn(),
     addEventListener: jest.fn(),
     registerEventHandler: jest.fn(),
     registerPlaybackService: jest.fn(),

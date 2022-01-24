@@ -21,9 +21,10 @@ export const PlayerContext = createContext<ContextType | null>(null);
 
 interface PlayerProvider {
   children: JSX.Element;
+  value?: ContextType;
 }
 
-const PlayerProvider = ({ children }: PlayerProvider): JSX.Element => {
+const PlayerProvider = ({ children, value }: PlayerProvider): JSX.Element => {
   const [playerValue, setPlayerValue] = useState<PlayerContextInterface>();
 
   const handleSong = useCallback((player: PlayerContextInterface) => {
@@ -32,7 +33,7 @@ const PlayerProvider = ({ children }: PlayerProvider): JSX.Element => {
 
   return (
     <>
-      <PlayerContext.Provider value={{ handleSong }}>
+      <PlayerContext.Provider value={value ? value : { handleSong }}>
         {children}
       </PlayerContext.Provider>
       {playerValue &&
