@@ -9,6 +9,7 @@ module.exports = {
     'ts-jest': {
       babelConfig: 'babel.config.js',
       tsconfig: 'tsconfig.test.json',
+      useESM: true,
     },
   },
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
