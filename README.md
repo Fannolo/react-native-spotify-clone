@@ -1,9 +1,12 @@
 # react native spotify clone 🎸
 
+<p align="center">
 <img src="./docs/images/home-screen.png" alt="home-screen.png" width="200"/>
 <img src="./docs/images/home-screen-with-player.png" alt="home-screen-with-player.png" width="200"/>
+</p>
+<p align="center">
 <img src="./docs/images/playlist-detail.png" alt="playlist-detail.png" width="200"/>
-<img src="./docs/images/playlist-detail-with-player.png" alt="playlist-detail-with-player.png" width="200"/>
+<img src="./docs/images/playlist-detail-with-player.png" alt="playlist-detail-with-player.png" width="200"/></p>
 
 ## Description
 
