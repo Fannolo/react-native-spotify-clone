@@ -20,11 +20,16 @@ const PlaylistCover = ({ playlist }: PlaylistCoverProps): JSX.Element => {
   }, [navigation, playlist]);
 
   return (
-    <TouchableOpacity onPress={handleOnPress} style={styles.container}>
+    <TouchableOpacity
+      onPress={handleOnPress}
+      style={styles.container}
+      testID='playlist-cover-button'
+    >
       <Image
         style={styles.image}
         source={{ uri: playlist.images[0]?.url }}
         resizeMode='cover'
+        testID='playlist-cover'
       />
     </TouchableOpacity>
   );

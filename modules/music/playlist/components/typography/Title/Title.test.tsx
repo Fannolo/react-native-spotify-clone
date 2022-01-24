@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import Title from '.';
+import Title from './index';
 
 describe('Title', () => {
   it('should render the component if a text prop is provided', () => {

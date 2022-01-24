@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import PlaylistDetailHeader from '.';
+import PlaylistDetailHeader from './index';
 
 const renderPlaylistDetailHeader = () => {
   return render(
@@ -35,9 +35,9 @@ const renderPlaylistDetailHeader = () => {
 describe('PlaylistDetailHeader', () => {
   it('should render the component with a title and a description as expected', () => {
     const { getByText } = renderPlaylistDetailHeader();
-    expect(getByText('hello')).not.toBeNull();
+    expect(getByText('Hello')).not.toBeNull();
     expect(getByText('name')).not.toBeNull();
-    expect(getByText('Playlist by spotify')).not.toBeNull();
-    expect(getByText('9923473 followers')).not.toBeNull();
+    expect(getByText('Playlist by Spotify')).not.toBeNull();
+    expect(getByText('9.9M followers')).not.toBeNull();
   });
 });
