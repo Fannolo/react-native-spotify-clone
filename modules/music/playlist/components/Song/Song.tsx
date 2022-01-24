@@ -55,6 +55,7 @@ const Song = ({ song }: SongItemProps): JSX.Element => {
             });
             addPlayer();
           }}
+          testID='song-item'
         >
           {artist && (
             <>

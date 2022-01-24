@@ -26,7 +26,7 @@ export interface Album {
   };
   href: string;
   id: string;
-  images: ImageType;
+  images: ImageType[];
   name: string;
   release_date: string;
   release_date_precision: string;
