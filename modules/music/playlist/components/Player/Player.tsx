@@ -1,5 +1,12 @@
-import React, { createContext, useCallback, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { View, StyleSheet, Animated, useWindowDimensions } from 'react-native';
+import { useProgress } from 'react-native-track-player';
 
 import colors from 'rnplayer/utils/colors';
 
@@ -31,6 +38,22 @@ const PlayerProvider = ({ children, value }: PlayerProvider): JSX.Element => {
     setPlayerValue(player);
   }, []);
 
+  const { position, duration } = useProgress();
+  const playerSongDuration = useRef(new Animated.Value(0)).current;
+  const { width: windowWidth } = useWindowDimensions();
+
+  const playerSongsAnimation = playerSongDuration.interpolate({
+    inputRange: [0, duration],
+    outputRange: [0, windowWidth],
+  });
+
+  useEffect(() => {
+    Animated.spring(playerSongDuration, {
+      toValue: position,
+      useNativeDriver: false,
+    }).start();
+  }, [playerSongDuration, position]);
+
   return (
     <>
       <PlayerContext.Provider value={value ? value : { handleSong }}>
@@ -40,17 +63,27 @@ const PlayerProvider = ({ children, value }: PlayerProvider): JSX.Element => {
         playerValue.songName &&
         playerValue.artist &&
         playerValue.preview_url && (
-          <View style={styles.container}>
-            <View>
-              <Caption
-                text={playerValue.songName}
-                color={colors.dark.white}
-                fontWeight='bold'
-              />
-              <Caption text={playerValue.artist} />
+          <>
+            <Animated.View
+              style={[
+                styles.playDuration,
+                {
+                  width: playerSongsAnimation,
+                },
+              ]}
+            />
+            <View style={styles.container}>
+              <View>
+                <Caption
+                  text={playerValue.songName}
+                  color={colors.dark.white}
+                  fontWeight='bold'
+                />
+                <Caption text={playerValue.artist} />
+              </View>
+              <PlayButton />
             </View>
-            <PlayButton />
-          </View>
+          </>
         )}
     </>
   );
@@ -60,12 +93,19 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.dark.black,
-    borderTopColor: colors.dark.green,
     borderTopWidth: 2,
     flexDirection: 'row',
     height: 80,
     justifyContent: 'space-between',
     padding: 20,
+  },
+  playDuration: {
+    backgroundColor: colors.dark.green,
+    height: 3,
+    left: 0,
+    // position: 'absolute',
+    // right: 0,
+    // top: 0,
   },
 });
 
